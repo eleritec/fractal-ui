@@ -1,12 +1,14 @@
 package net.eleritec.fractalui.events;
 
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
-import java.util.ArrayList;
-import java.awt.event.ItemListener;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
+
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentListener;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,7 +30,7 @@ public class EventMonitor {
         }
     }
 
-    private Object trackListener(Object listener, Class...types) {
+    private Object trackListener(Object listener, Class<?>...types) {
         Enabler handler = (Enabler) EnabledListenerProxy.getProxy(listener, types);
         handlers.add(handler);
         return handler;
@@ -37,6 +39,10 @@ public class EventMonitor {
     public ChangeListener createChangeListener(ChangeListener listener) {
         return (ChangeListener)trackListener(listener,
                                                    ChangeListener.class);
+    }
+    
+    public DocumentListener createDocumentListener(DocumentListener listener) {
+        return (DocumentListener)trackListener(listener, DocumentListener.class);
     }
 
     public ItemListener createItemListener(ItemListener listener) {

@@ -1,6 +1,7 @@
 package net.eleritec.fractalui;
 
 import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentListener;
 
 import net.eleritec.fractalui.events.ControllerChangeEvent;
 import net.eleritec.fractalui.events.ControllerListener;
@@ -218,6 +219,10 @@ public abstract class AbstractViewPresenter<T> implements ControllerListener<T> 
 
     protected ChangeListener createChangeListener(ChangeListener listener) {
         return getMonitor().createChangeListener(listener);
+    }
+    
+    protected DocumentListener createDocumentListener(DocumentListener listener) {
+        return getMonitor().createDocumentListener(listener);
     }
 
     protected ItemListener createItemListener(ItemListener listener) {
