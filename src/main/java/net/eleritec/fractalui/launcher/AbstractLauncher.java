@@ -81,7 +81,7 @@ public abstract class AbstractLauncher<M> implements Runnable {
         return title;
     }
 
-    private void initApplication() {
+    protected void initApplication() {
         if(isStandalone()) {
             initializeConfigSystem();
             initializeLookAndFeel();

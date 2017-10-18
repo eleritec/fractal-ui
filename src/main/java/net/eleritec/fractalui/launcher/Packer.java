@@ -51,6 +51,8 @@ public class Packer {
             case HORIZONTAL:
                 w.setSize(w.getWidth(), size.height);
                 break;
+            default:
+            	break;
         }
         w.validate();
     }
